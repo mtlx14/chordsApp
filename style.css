@@ -1,0 +1,709 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("Font/Montserrat-VariableFont_wght.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+  font-weight: 300;
+}
+
+body {
+  background-color: #1e2934;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.buttonStats {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.8rem;
+  left: 90vw;
+  top: 80vh;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.buttonStats .click {
+  width: 100%;
+  height: 100%;
+}
+
+.songsContainerRecents,
+.songsContainerPined,
+.songsContainerSearch {
+  width: 100vw;
+  position: relative;
+  display: none;
+  margin-top: 0px;
+}
+.songsContainerRecents .songsListHeader,
+.songsContainerPined .songsListHeader,
+.songsContainerSearch .songsListHeader {
+  height: 0px;
+  overflow: hidden;
+  transition: 0.3s height ease;
+}
+.songsContainerRecents .item_songCardContainer,
+.songsContainerPined .item_songCardContainer,
+.songsContainerSearch .item_songCardContainer {
+  overflow: hidden;
+  transition: 0.3s height ease;
+  height: 90px;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll {
+  overflow-x: scroll;
+  width: calc(100vw - 10px);
+  padding-right: 10px;
+  display: flex;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  height: 90px;
+  transition: 0.5s height ease 0.5s;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll::-webkit-scrollbar,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll::-webkit-scrollbar,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll::-webkit-scrollbar {
+  display: none;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame {
+  width: calc(30vw - 10px);
+  min-width: calc(30vw - 10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  scroll-snap-align: end;
+  scroll-snap-stop: always;
+  margin: 10px 0 0 0;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter {
+  transition: 0.2s opacity ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter p,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter p,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter p {
+  font-size: 0.9rem;
+  text-align: center;
+  width: 18vw;
+  opacity: 1;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter img,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter img,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame1 .textCenter img {
+  width: 2rem;
+  opacity: 0.8;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 {
+  scroll-margin: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: calc(70vw - 10px);
+  min-width: calc(70vw - 10px);
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter {
+  opacity: 0;
+  transition: 0.2s opacity ease;
+  height: 100%;
+  width: 40vw;
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter img,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter img,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .addToSnipedListFrame2 .textCenter img {
+  width: 2.2rem;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard {
+  scroll-snap-align: end;
+  scroll-snap-stop: always;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  display: flex;
+  height: 80px;
+  padding: 0 10px;
+  width: calc(100vw - 40px);
+  min-width: calc(100vw - 40px);
+  position: relative;
+  margin: 10px 10px 0 10px;
+  cursor: pointer;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .title,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .title,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .title {
+  font-weight: 500;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .artist,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .artist,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .left .artist {
+  font-size: 0.8rem;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  gap: 5px;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note {
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note p,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note p,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note p {
+  font-weight: 500;
+  pointer-events: none;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note .point,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note .point,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .note .point {
+  position: absolute;
+  font-size: 2.5rem;
+  line-height: 0;
+  bottom: 0.6rem;
+  width: 2.8rem;
+  text-align: center;
+  left: 0;
+  color: rgb(243, 45, 118);
+  pointer-events: none;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeKey,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeKey,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeKey {
+  color: rgb(35, 178, 75);
+  background-color: rgba(35, 178, 75, 0.2);
+  border: 1px rgb(35, 178, 75) solid;
+  text-shadow: 0 0 0.05rem rgb(35, 178, 75);
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeFavorite,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeFavorite,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeFavorite {
+  color: rgba(235, 195, 93, 0.8);
+  background-color: rgba(235, 195, 93, 0.2);
+  border: 1px rgb(235, 195, 93) solid;
+  text-shadow: 0 0 0.05rem rgb(235, 195, 93);
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeRecent,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeRecent,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .centerContainer .right .typeRecent {
+  color: rgb(58, 151, 244);
+  background-color: rgba(58, 151, 244, 0.2);
+  border: 1px rgb(58, 151, 244) solid;
+  text-shadow: 0 0 0.05rem rgb(58, 151, 244);
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIcon,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIcon,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIcon {
+  display: none;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+}
+.songsContainerRecents .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive img,
+.songsContainerPined .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive img,
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard .pinedIconActive img {
+  width: 0.8rem;
+  opacity: 0.7;
+}
+
+.songsContainerSearch .item_songCardContainer .item_songCardContainerScroll .item_songCard {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.options1 {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px 0 10px;
+  gap: 5px;
+  transition: margin 0.3s ease;
+}
+.options1 .back {
+  display: none;
+  height: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 0 0.6rem 0 0.4rem;
+  gap: 0.2rem;
+}
+.options1 .back img {
+  width: 0.9rem;
+  height: 0.8rem;
+  pointer-events: none;
+}
+.options1 .back p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  pointer-events: none;
+}
+.options1 .keyNotation {
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  gap: 10px;
+  height: 1.8rem;
+  width: 3.2rem;
+  border-radius: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+.options1 .keyNotation .togle {
+  height: 1.5rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  right: 0;
+}
+.options1 .keyNotation p {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.8rem;
+}
+.options1 .keyNotation .c {
+  color: rgba(255, 255, 255, 0.5);
+}
+.options1 .keyNotation .do {
+  color: rgb(35, 178, 75);
+  font-size: 0.8rem;
+}
+.options1 .americanScaleTrue .togle {
+  left: 0;
+  width: 1.5rem;
+}
+.options1 .americanScaleTrue .c {
+  color: rgb(35, 178, 75);
+}
+.options1 .americanScaleTrue .do {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mainFrame {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.mainFrame .mainFrameLeft {
+  position: relative;
+  left: 0vw;
+  transition: left 0.3s ease;
+  width: 100vw;
+  min-width: 100vw;
+}
+.mainFrame .mainFrameLeft .searchFrame .searchText {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  align-items: center;
+  gap: 5px;
+  margin: 20px 10px 0 10px;
+}
+.mainFrame .mainFrameLeft .searchFrame .searchText img {
+  width: 24px;
+  height: 24px;
+  padding: 8px 0;
+  padding-left: 20px;
+  opacity: 0.9;
+}
+.mainFrame .mainFrameLeft .searchFrame .searchText input {
+  background: none;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+}
+.mainFrame .mainFrameLeft .searchFrame .searchText input:focus {
+  outline: none;
+}
+.mainFrame .mainFrameLeft .songsListHeader {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.mainFrame .mainFrameRight {
+  width: calc(100vw - 20px);
+  min-width: calc(100vw - 20px);
+  position: relative;
+  transition: left 0.3s ease;
+  left: 0vw;
+  padding: 0 10px;
+}
+.mainFrame .mainFrameRight .optionsTop {
+  z-index: 5;
+  left: 10px;
+  position: absolute;
+  padding-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100vw - 20px);
+  background-color: #1e2934;
+}
+.mainFrame .mainFrameRight .optionsTop .back {
+  display: flex;
+  height: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 0 0.6rem 0 0.4rem;
+  gap: 0.2rem;
+}
+.mainFrame .mainFrameRight .optionsTop .back img {
+  width: 0.9rem;
+  height: 0.8rem;
+}
+.mainFrame .mainFrameRight .optionsTop .back p {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight {
+  position: relative;
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight div {
+  display: flex;
+  height: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  border-radius: 1rem;
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight .selectTextLong {
+  padding: 0 0.35rem;
+  gap: 0.5rem;
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight .selectTextLong img {
+  width: 1.1rem;
+  height: 1.1rem;
+  opacity: 0.9;
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight .selectTextLong .selected {
+  filter: invert(50%) sepia(59%) saturate(630%) hue-rotate(84deg) brightness(99%) contrast(85%);
+}
+.mainFrame .mainFrameRight .optionsTop .optionsRight .selectTextLong .togle {
+  position: absolute;
+  height: 1.8rem;
+  width: 1.8rem;
+  transition: left 0.5s ease;
+}
+.mainFrame .mainFrameRight .titleSong {
+  z-index: 4;
+  position: absolute;
+  left: 10px;
+  background-color: #1e2934;
+  padding-top: 3.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+.mainFrame .mainFrameRight .keyFrame {
+  z-index: 3;
+  position: absolute;
+  left: 10px;
+  background-color: #1e2934;
+  padding-top: 5.6rem;
+  padding-bottom: 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  width: 100%;
+  border-radius: 0.4rem;
+  height: 1.2rem;
+  align-items: center;
+  display: flex;
+}
+.mainFrame .mainFrameRight .keyFrame .textContainer1 {
+  border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
+  border-top: 1px rgba(255, 255, 255, 0.1) solid;
+  border-left: 1px rgba(255, 255, 255, 0.1) solid;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 0.2rem;
+}
+.mainFrame .mainFrameRight .keyFrame .textContainer1 p {
+  font-size: 0.8rem;
+}
+.mainFrame .mainFrameRight .keyFrame .textContainer2 {
+  display: flex;
+  border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
+  border-top: 1px rgba(255, 255, 255, 0.1) solid;
+  border-right: 1px rgba(255, 255, 255, 0.1) solid;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  padding: 0 0.2rem;
+  gap: 0.2rem;
+}
+.mainFrame .mainFrameRight .keyFrame .textContainer2 p {
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.mainFrame .mainFrameRight .keyFrame .textContainer2 .keySelected {
+  color: rgb(35, 178, 75);
+  text-shadow: 0 0 0.02rem rgb(35, 178, 75);
+}
+.mainFrame .mainFrameRight .songFrame {
+  margin-top: 7.8rem;
+  height: 500px;
+  overflow: scroll;
+}
+.mainFrame .mainFrameRight .songFrame .lyricsLine {
+  margin-top: -1px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+.mainFrame .mainFrameRight .songFrame .indexLine {
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+.mainFrame .mainFrameRight .songFrame .chordLine {
+  margin-top: 1px;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgb(35, 178, 75);
+  text-shadow: 0 0 0.02rem rgb(35, 178, 75);
+}
+.mainFrame .mainFrameRight .songFrame .chordLine .chordSeparator {
+  color: rgba(35, 178, 75, 0.5);
+  text-shadow: 0 0 0.02rem rgba(35, 178, 75, 0.5);
+}
+
+.closepopupKeySelector {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: none;
+}
+
+.popupKeySelect {
+  width: 10rem;
+  opacity: 0;
+  position: absolute;
+  top: 6.8rem;
+  left: 10px;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  transition: height 0.2s ease;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 10;
+}
+.popupKeySelect .row {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  height: 2.2rem;
+  align-items: center;
+  width: 10rem;
+}
+.popupKeySelect .row p {
+  width: 4rem;
+  padding-left: 1rem;
+  text-align: start;
+  font-weight: 500;
+  pointer-events: none;
+}
+.popupKeySelect .row .text3 {
+  display: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.popupKeySelectActiveIndicator {
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 12.2rem;
+  height: 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  transition: opacity 0.3s ease;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+  z-index: 11;
+  opacity: 0;
+}
+.popupKeySelectActiveIndicator .imgContainer {
+  height: 2.2rem;
+  width: 2.2rem;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popupKeySelectActiveIndicator .imgContainer img {
+  position: relative;
+  width: 1.8rem;
+  opacity: 0.8;
+  right: -2.2rem;
+  transition: right 0.3s ease;
+}
+
+.switchSongFrame {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 20rem;
+  height: 3rem;
+  top: calc(90vh - 4rem);
+  left: calc((100vw - 20rem) / 2);
+  border-radius: 40px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+.switchSongFrame .left {
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+}
+.switchSongFrame .left img {
+  width: 1rem;
+  padding: 0 0.5rem;
+}
+.switchSongFrame .right {
+  padding-right: 0.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.switchSongFrame .right .info {
+  padding-left: 0.5rem;
+  height: 100%;
+  width: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.switchSongFrame .right .info .title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.switchSongFrame .right .info .artist {
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.switchSongFrame .right .keys {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 0.25rem;
+}
+.switchSongFrame .right .keys div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50px;
+}
+.switchSongFrame .right .keys div p {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.switchSongFrame .right .keys .typeKey {
+  color: rgb(35, 178, 75);
+  background-color: rgba(35, 178, 75, 0.2);
+  text-shadow: 0 0 0.05rem rgb(35, 178, 75);
+  border: 1px rgb(35, 178, 75) solid;
+}
+.switchSongFrame .right .keys .typeFavorite {
+  color: rgb(235, 195, 93);
+  background-color: rgba(235, 195, 93, 0.2);
+  border: 1px rgb(235, 195, 93) solid;
+}
+.switchSongFrame .right .keys .typeRecent {
+  color: rgb(58, 151, 244);
+  background-color: rgba(58, 151, 244, 0.2);
+  border: 1px rgb(58, 151, 244) solid;
+}/*# sourceMappingURL=style.css.map */

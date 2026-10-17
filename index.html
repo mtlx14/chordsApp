@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Chords App</title>
+  </head>
+  <body>
+    <section class="mainFrame">
+      <div class="mainFrameLeft">
+        <div class="searchFrame">
+          <div class="searchText">
+            <img src="Images/icon--search.png" alt="" />
+            <input type="text" placeholder="Buscar canción..." />
+          </div>
+        </div>
+        <div class="options1">
+          <div class="left">
+            <div class="back" id="backToListFromSearch">
+              <img src="Images/icon--back.png" alt="" />
+              <p>Volver a lista</p>
+            </div>
+          </div>
+          <div class="keyNotation americanScaleTrue" id="keyNotationClick">
+            <div class="togle"></div>
+            <p class="c">C</p>
+            <p class="do">Do</p>
+          </div>
+        </div>
+        <div class="songContainerMain">
+          <div class="songsContainerPined">
+            <template class="item_songCard_template">
+              <div class="item_songCardContainer">
+                <div class="item_songCardContainerScroll">
+                  <div class="item_songCard">
+                    <div class="pinedIcon">
+                      <img src="Images/icon--pin.png" alt="" />
+                    </div>
+                    <div class="centerContainer">
+                      <div class="left">
+                        <p class="title">El tiempo es ya</p>
+                        <p class="artist">New wine</p>
+                      </div>
+                      <div class="right keysContainer">
+                        <template class="keysTemplate">
+                          <div class="note">
+                            <p class="textNote">C#m</p>
+                            <!-- <div class="point">·</div> -->
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame1">
+                    <div class="textCenter">
+                      <img src="Images/icon--arrowLeft.png" alt="" />
+                      <p>Deslizar para fijar</p>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame2">
+                    <div class="textCenter">
+                      <p>Canción fijada</p>
+                      <img src="Images/icon--check.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <div class="songsContainerRecents">
+            <template class="item_songCard_template">
+              <div class="item_songCardContainer">
+                <div class="item_songCardContainerScroll">
+                  <div class="item_songCard">
+                    <div class="centerContainer">
+                      <div class="left">
+                        <p class="title">El tiempo es ya</p>
+                        <p class="artist">New wine</p>
+                      </div>
+                      <div class="right keysContainer">
+                        <template class="keysTemplate">
+                          <div class="note">
+                            <p class="textNote">C#m</p>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame1">
+                    <div class="textCenter">
+                      <img src="Images/icon--arrowLeft.png" alt="" />
+                      <p>Deslizar para fijar</p>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame2">
+                    <div class="textCenter">
+                      <p>Canción fijada</p>
+                      <img src="Images/icon--check.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <div class="songsContainerSearch">
+            <template class="item_songCard_template">
+              <div class="item_songCardContainer">
+                <div class="item_songCardContainerScroll">
+                  <div class="item_songCard">
+                    <div class="centerContainer">
+                      <div class="left">
+                        <p class="title">El tiempo es ya</p>
+                        <p class="artist">New wine</p>
+                      </div>
+                      <div class="right keysContainer">
+                        <template class="keysTemplate">
+                          <div class="note">
+                            <p class="textNote">C#m</p>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame1">
+                    <div class="textCenter">
+                      <img src="Images/icon--arrowLeft.png" alt="" />
+                      <p>Deslizar para fijar</p>
+                    </div>
+                  </div>
+                  <div class="addToSnipedListFrame addToSnipedListFrame2">
+                    <div class="textCenter">
+                      <p>Canción fijada</p>
+                      <img src="Images/icon--check.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="mainFrameRight">
+        <div class="optionsTop">
+          <div class="back">
+            <img src="Images/icon--back.png" alt="" />
+            <p>Lista</p>
+          </div>
+          <div class="optionsRight">
+            <div class="selectTextLong">
+              <img class="textS" src="Images/icon--textS.png" alt="" />
+              <img class="textL selected" src="Images/icon--textL.png" alt="" />
+              <div class="togle"></div>
+            </div>
+          </div>
+        </div>
+        <p class="titleSong">aa</p>
+        <a class="keyFrame">
+          <div class="textContainer1">
+            <p>Nota</p>
+          </div>
+          <div class="textContainer2">
+            <p class="keyMayor">E</p>
+            <p class="keyMenor keySelected">C#m</p>
+          </div>
+        </a>
+        <div class="songFrame"></div>
+        <div class="switchSongFrame">
+          <div class="left">
+            <img src="Images/icon--back.png" alt="" />
+          </div>
+          <div class="right">
+            <div class="info">
+              <div class="title">Libre para adorar</div>
+              <div class="artist">New wine</div>
+            </div>
+            <div class="keys"></div>
+          </div>
+        </div>
+      </div>
+      <div class="buttonStats">
+        <a href="" class="click"></a>
+      </div>
+    </section>
+    <section class="popupKeySelect"></section>
+    <div class="closepopupKeySelector"></div>
+    <div class="popupKeySelectActiveIndicator">
+      <div class="imgContainer">
+        <img src="Images/icon--arrowLeft.png" alt="" />
+      </div>
+    </div>
+    <template class="popupKeySelectRowTemplate">
+      <a class="row">
+        <p class="text1">E</p>
+        <p class="text2">C#m</p>
+        <p class="text3">C#m</p>
+      </a>
+    </template>
+    <template class="templateKeySwitchSongFrame">
+      <div class="key_type">
+        <p>F</p>
+      </div>
+    </template>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

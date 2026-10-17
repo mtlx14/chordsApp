@@ -1,0 +1,727 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Font/Montserrat-VariableFont_wght.ttf');
+}
+$backgroundColor: #1e2934;
+$backgroundColor02: rgb(30, 41, 52, 0.1);
+$colorWhite: rgba(255, 255, 255, 0.9);
+$colorWhite08: rgba(255, 255, 255, 0.8);
+$colorWhite07: rgba(255, 255, 255, 0.7);
+$colorWhite05: rgba(255, 255, 255, 0.5);
+$colorWhite03: rgba(255, 255, 255, 0.3);
+$colorWhite02: rgba(255, 255, 255, 0.2);
+$colorWhite01: rgba(255, 255, 255, 0.1);
+$colorWhite005: rgba(255, 255, 255, 0.05);
+$colorWhite002: rgba(255, 255, 255, 0.02);
+
+$colorGreen: rgb(35, 178, 75);
+$colorGreen05: rgba(35, 178, 75, 0.5);
+$colorGreen02: rgba(35, 178, 75, 0.2);
+$colorGreen01: rgba(35, 178, 75, 0.15);
+$colorGreen005: rgba(35, 178, 75, 0.05);
+
+$colorBlue: rgb(58, 151, 244);
+$colorBlue07: rgb(58, 151, 244, 0.7);
+$colorBlue02: rgb(58, 151, 244, 0.2);
+$colorBlue01: rgb(58, 151, 244, 0.1);
+
+$colorYellow: rgb(235, 195, 93);
+$colorYellow08: rgb(235, 195, 93, 0.8);
+$colorYellow05: rgb(235, 195, 93, 0.5);
+$colorYellow02: rgb(235, 195, 93, 0.2);
+$colorYellow01: rgb(235, 195, 93, 0.1);
+$colorYellow005: rgb(235, 195, 93, 0.05);
+
+$colorPink: rgba(243, 45, 118);
+$colorPink01: rgba(243, 45, 118, 0.1);
+$colorPink05: rgba(243, 45, 118, 0.5);
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+body {
+  background-color: $backgroundColor;
+  color: $colorWhite;
+  position: relative;
+
+  // height: 100%;
+  // overflow: hidden;
+}
+.buttonStats {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.8rem;
+  left: 90vw;
+  top: 80vh;
+  background-color: $colorWhite01;
+  .click {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.songsContainerRecents,
+.songsContainerPined,
+.songsContainerSearch {
+  width: 100vw;
+  position: relative;
+  display: none;
+  margin-top: 0px;
+  .songsListHeader {
+    height: 0px;
+    overflow: hidden;
+    transition: 0.3s height ease;
+  }
+
+  .item_songCardContainer {
+    overflow: hidden;
+
+    transition: 0.3s height ease;
+    height: 90px;
+    .item_songCardContainerScroll {
+      overflow-x: scroll;
+      width: calc(100vw - 10px);
+      padding-right: 10px;
+      display: flex;
+      overflow-y: hidden;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scroll-snap-type: x mandatory;
+      height: 90px;
+      transition: 0.5s height ease 0.5s;
+      .addToSnipedListFrame {
+        // height: 80px;
+        width: calc(30vw - 10px);
+        min-width: calc(30vw - 10px);
+        background-color: $colorWhite01;
+        margin-top: 10px;
+        scroll-snap-align: end;
+        scroll-snap-stop: always;
+        margin: 10px 0 0 0;
+      }
+      .addToSnipedListFrame1 {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        // flex-direction: column;
+        .textCenter {
+          transition: 0.2s opacity ease;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 1;
+          p {
+            font-size: 0.9rem;
+            text-align: center;
+            width: 18vw;
+            opacity: 1;
+          }
+          img {
+            width: 2rem;
+            opacity: 0.8;
+          }
+        }
+      }
+      .addToSnipedListFrame2 {
+        scroll-margin: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        width: calc(70vw - 10px);
+        min-width: calc(70vw - 10px);
+
+        .textCenter {
+          opacity: 0;
+          transition: 0.2s opacity ease;
+          height: 100%;
+          width: 40vw;
+          padding-top: 2px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 2.2rem;
+          }
+        }
+      }
+      .item_songCard {
+        scroll-snap-align: end;
+        scroll-snap-stop: always;
+        background-color: $colorWhite002;
+        border-radius: 10px;
+        display: flex;
+        height: 80px;
+        padding: 0 10px;
+        width: calc(100vw - 40px);
+        min-width: calc(100vw - 40px);
+        position: relative;
+        margin: 10px 10px 0 10px;
+        cursor: pointer;
+        .centerContainer {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .left {
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            .title {
+              font-weight: 500;
+            }
+            .artist {
+              font-size: 0.8rem;
+            }
+          }
+          .right {
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            gap: 5px;
+            .note {
+              width: 2.8rem;
+              height: 2.8rem;
+              background-color: $colorWhite002;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              position: relative;
+              p {
+                font-weight: 500;
+                pointer-events: none;
+              }
+              .point {
+                position: absolute;
+                font-size: 2.5rem;
+                line-height: 0;
+                bottom: 0.6rem;
+                width: 2.8rem;
+                text-align: center;
+                left: 0;
+                color: $colorPink;
+                pointer-events: none;
+              }
+            }
+            .typeKey {
+              color: $colorGreen;
+              background-color: $colorGreen02;
+              border: 1px $colorGreen solid;
+
+              text-shadow: 0 0 0.05rem $colorGreen;
+            }
+            .typeFavorite {
+              color: $colorYellow08;
+              background-color: $colorYellow02;
+              border: 1px $colorYellow solid;
+              text-shadow: 0 0 0.05rem $colorYellow;
+            }
+            .typeRecent {
+              color: $colorBlue;
+              background-color: $colorBlue02;
+              border: 1px $colorBlue solid;
+              text-shadow: 0 0 0.05rem $colorBlue;
+            }
+          }
+        }
+        .pinedIcon {
+          display: none;
+        }
+        .pinedIconActive {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: $colorWhite005;
+          width: 1.2rem;
+          height: 1.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // border-radius: 3px;
+          border-top-right-radius: 10px;
+          border-bottom-left-radius: 3px;
+          img {
+            width: 0.8rem;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+.songsContainerSearch {
+  .item_songCardContainer {
+    .item_songCardContainerScroll {
+      .item_songCard {
+        background-color: $colorWhite01;
+      }
+    }
+  }
+}
+.options1 {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px 0 10px;
+  gap: 5px;
+  transition: margin 0.3s ease;
+
+  .back {
+    display: none;
+    height: 1.8rem;
+    background-color: $colorWhite005;
+    justify-content: center;
+    width: fit-content;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 0 0.6rem 0 0.4rem;
+    gap: 0.2rem;
+    img {
+      width: 0.9rem;
+      height: 0.8rem;
+      pointer-events: none;
+    }
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      pointer-events: none;
+    }
+  }
+  .keyNotation {
+    background-color: $colorWhite005;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    position: relative;
+    gap: 10px;
+    height: 1.8rem;
+    width: 3.2rem;
+    border-radius: 1rem;
+    align-items: center;
+    cursor: pointer;
+
+    .togle {
+      height: 1.5rem;
+      width: 2rem;
+      border-radius: 1rem;
+      background-color: $colorWhite01;
+      position: absolute;
+      right: 0;
+    }
+    p {
+      width: fit-content;
+      font-size: 0.8rem;
+    }
+    .c {
+      color: $colorWhite05;
+    }
+    .do {
+      color: $colorGreen;
+      font-size: 0.8rem;
+    }
+  }
+  .americanScaleTrue {
+    .togle {
+      left: 0;
+      width: 1.5rem;
+    }
+    .c {
+      color: $colorGreen;
+    }
+    .do {
+      color: $colorWhite05;
+    }
+  }
+}
+.mainFrame {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  // height: 100%;
+  // height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .mainFrameLeft {
+    position: relative;
+    left: 0vw;
+    // padding: 10px;
+    transition: left 0.3s ease;
+    width: 100vw;
+    min-width: 100vw;
+
+    .searchFrame {
+      .searchText {
+        display: flex;
+        background-color: $colorWhite01;
+        border-radius: 20px;
+        align-items: center;
+        gap: 5px;
+        margin: 20px 10px 0 10px;
+        img {
+          width: 24px;
+          height: 24px;
+          padding: 8px 0;
+          padding-left: 20px;
+          opacity: 0.9;
+        }
+        input {
+          background: none;
+          font-size: 1rem;
+          border: none;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+          color: $colorWhite;
+        }
+      }
+    }
+    .songsListHeader {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-left: 10px;
+      color: $colorWhite07;
+    }
+  }
+  .mainFrameRight {
+    width: calc(100vw - 20px);
+    min-width: calc(100vw - 20px);
+    position: relative;
+    transition: left 0.3s ease;
+    left: 0vw;
+    padding: 0 10px;
+    .optionsTop {
+      z-index: 5;
+      left: 10px;
+      position: absolute;
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      width: calc(100vw - 20px);
+      background-color: $backgroundColor;
+      // background-color: red;
+      // height: 100vh;
+      .back {
+        display: flex;
+        height: 1.8rem;
+        background-color: $colorWhite005;
+        justify-content: center;
+        width: fit-content;
+        align-items: center;
+        border-radius: 1rem;
+        padding: 0 0.6rem 0 0.4rem;
+        gap: 0.2rem;
+        img {
+          width: 0.9rem;
+          height: 0.8rem;
+        }
+        p {
+          font-size: 0.9rem;
+          font-weight: 400;
+        }
+      }
+      .optionsRight {
+        position: relative;
+        div {
+          display: flex;
+          height: 1.8rem;
+          background-color: $colorWhite005;
+          justify-content: center;
+          width: fit-content;
+          align-items: center;
+          border-radius: 1rem;
+        }
+        .selectTextLong {
+          padding: 0 0.35rem;
+          gap: 0.5rem;
+          img {
+            width: 1.1rem;
+            height: 1.1rem;
+            opacity: 0.9;
+          }
+          .selected {
+            filter: invert(50%) sepia(59%) saturate(630%) hue-rotate(84deg) brightness(99%) contrast(85%);
+          }
+          .togle {
+            position: absolute;
+            height: 1.8rem;
+            width: 1.8rem;
+
+            transition: left 0.5s ease;
+          }
+        }
+      }
+    }
+    .titleSong {
+      z-index: 4;
+      position: absolute;
+      left: 10px;
+      background-color: $backgroundColor;
+
+      padding-top: 3.8rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: $colorWhite08;
+    }
+    .keyFrame {
+      z-index: 3;
+      position: absolute;
+      left: 10px;
+      background-color: $backgroundColor;
+      padding-top: 5.6rem;
+      padding-bottom: 1rem;
+      // background-color: $colorWhite005;
+      width: fit-content;
+      width: 100%;
+      border-radius: 0.4rem;
+      height: 1.2rem;
+
+      align-items: center;
+      display: flex;
+
+      .textContainer1 {
+        border-bottom: 1px $colorWhite01 solid;
+        border-top: 1px $colorWhite01 solid;
+        border-left: 1px $colorWhite01 solid;
+        border-top-left-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+        background-color: $colorWhite01;
+        padding: 0 0.2rem;
+
+        p {
+          font-size: 0.8rem;
+        }
+      }
+      .textContainer2 {
+        display: flex;
+        border-bottom: 1px $colorWhite01 solid;
+        border-top: 1px $colorWhite01 solid;
+        border-right: 1px $colorWhite01 solid;
+        border-top-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+        padding: 0 0.2rem;
+        gap: 0.2rem;
+        p {
+          font-size: 0.8rem;
+          background-color: $colorWhite002;
+        }
+
+        .keySelected {
+          color: $colorGreen;
+          text-shadow: 0 0 0.02rem $colorGreen;
+        }
+      }
+    }
+    .songFrame {
+      margin-top: 7.8rem;
+      height: 500px;
+      overflow: scroll;
+      .lyricsLine {
+        margin-top: -1px;
+        font-weight: 300;
+        color: $colorWhite07;
+        font-size: 0.9rem;
+      }
+      .indexLine {
+        font-weight: 500;
+        font-size: 0.8rem;
+        text-align: center;
+        color: $colorWhite08;
+      }
+      .chordLine {
+        margin-top: 1px;
+        display: flex;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $colorGreen;
+        text-shadow: 0 0 0.02rem $colorGreen;
+        .chordSeparator {
+          color: $colorGreen05;
+          text-shadow: 0 0 0.02rem $colorGreen05;
+        }
+      }
+    }
+  }
+}
+.closepopupKeySelector {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 9;
+  display: none;
+}
+.popupKeySelect {
+  width: 10rem;
+  opacity: 0;
+  position: absolute;
+  top: 6.8rem;
+  left: 10px;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  transition: height 0.2s ease;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+
+  .row {
+    background-color: $colorWhite01;
+    display: flex;
+    // padding: 0 2rem;
+
+    height: 2.2rem;
+    align-items: center;
+    width: 10rem;
+
+    p {
+      width: 4rem;
+      // min-width: 4rem;
+      // background-color: red;
+      padding-left: 1rem;
+      text-align: start;
+      font-weight: 500;
+      pointer-events: none;
+    }
+    .text3 {
+      display: none;
+      border-left: 1px solid $colorWhite03;
+    }
+  }
+
+  // .selected {
+  //   width: 182.2rem;
+  //   border-top-right-radius: 8px;
+  //   border-bottom-right-radius: 8px;
+  // }
+}
+.popupKeySelectActiveIndicator {
+  background-color: $colorWhite03;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 12.2rem;
+  height: 0rem;
+  // height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  transition: opacity 0.3s ease;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+  z-index: 11;
+  opacity: 0;
+  .imgContainer {
+    height: 2.2rem;
+    width: 2.2rem;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      position: relative;
+      width: 1.8rem;
+      opacity: 0.8;
+      right: -2.2rem;
+      transition: right 0.3s ease;
+    }
+  }
+}
+.switchSongFrame {
+  display: none;
+  position: absolute;
+  background-color: $colorWhite01;
+  width: 20rem;
+  height: 3rem;
+  top: calc(90vh - 4rem);
+  left: calc((100vw - 20rem) / 2);
+  border-radius: 40px;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  .left {
+    height: 100%;
+    border-right: 1px solid $colorWhite02;
+    display: flex;
+    align-items: center;
+    img {
+      width: 1rem;
+      padding: 0 0.5rem;
+    }
+  }
+  .right {
+    padding-right: 0.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .info {
+      padding-left: 0.5rem;
+      height: 100%;
+
+      width: 8.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .artist {
+        font-size: 0.7rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .keys {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      gap: 0.25rem;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50px;
+        p {
+          font-size: 0.7rem;
+          font-weight: 500;
+        }
+      }
+      .typeKey {
+        color: $colorGreen;
+        background-color: $colorGreen02;
+        text-shadow: 0 0 0.05rem $colorGreen;
+        border: 1px $colorGreen solid;
+      }
+      .typeFavorite {
+        color: $colorYellow;
+        background-color: $colorYellow02;
+        // text-shadow: 0 0 0.05rem $colorYellow;
+        border: 1px $colorYellow solid;
+      }
+      .typeRecent {
+        color: $colorBlue;
+        background-color: $colorBlue02;
+        // text-shadow: 0 0 0.05rem $colorYellow;
+        border: 1px $colorBlue solid;
+      }
+    }
+  }
+}

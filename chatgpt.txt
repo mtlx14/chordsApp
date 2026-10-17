@@ -1,0 +1,26 @@
+agrega 000_0_ al principio de cada verso, agrega comillas a cada verso, separa cada verso por una coma: 
+
+suma 20 al numero de 3 dígitos al principio:
+
+
+
+
+// songsDB lyrics 000_1_texto
+// 0 --> 3 carácter, numero de linea
+// 1 --> 1 carácter, tipo de linea(0:letra 1:intro,estrofa)
+
+// songsDB chord 000_1_02-3
+// 0 --> 3 carácter, numero de linea
+// 1 --> 1 carácter, tipo de acorde (0:base 1:lina de acorde)
+// 2 --> 2 carácter, numero de espacios
+// 3 --> 1 carácter, acorde (intervalo)
+
+//si acorde no esta en la escala se ocupa 'completeNotesToFind' se escribe el numero que es la distancia entre la key y la nota a imprimir 
+//y M si es mayor o m si es menor
+// n si es menor 7
+      '002_0_02--04M',
+
+//si es nota partida será       '002_0_02--04M/03M',
+
+
+
